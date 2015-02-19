@@ -30,6 +30,7 @@ def openUrl(url):
     # open url and return content as String
     import urllib
     sock = urllib.urlopen(url)
+    print ("open url :"), url
     text = sock.read()
     sock.close()
     return text # String
@@ -37,8 +38,8 @@ def openUrl(url):
 def saveUrl(url, directory, filename):
     # open url and save content to textfile
     createDirectory(directory)
-    print ("Downloading :"), url
     text = openUrl(url)
+    print "save file", filename
     writeFile(filename, text)
 
 
