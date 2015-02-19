@@ -1,18 +1,28 @@
 '''
 Created on Feb 19, 2015
-
 @author: Pysarn
+test on Python 2.7
 '''
 
-def FileRead(Filename):
+def createDirectory(Path):
+    import os
+    import errno
+
+    try:
+        os.makedirs(Path)
+    except OSError as exception:
+        if exception.errno != errno.EEXIST:
+            raise
+    
+def readFile(Filename):
     f = open(Filename, 'r')
     return f.read()
     
-def FileWrite(Filename, Text):
+def writeFile(Filename, Text):
     f = open(Filename, 'w')
     f.write(Text)
 
-def UrlOpen(url):
+def openUrl(url):
     import urllib
     sock = urllib.urlopen(url)
     text = sock.read()
@@ -21,9 +31,11 @@ def UrlOpen(url):
 
 if __name__ == '__main__':
     # test FileWrite and FileRead functions  
-    FileWrite("test.txt", "Hello World!")
-    print FileRead("test.txt")
+    createDirectory("new_dir")    
+    
+    writeFile("test.txt", "Hello World!")
+    print readFile("test.txt")
 
     # test Download
-    print UrlOpen("http://example.com")
+    print openUrl("http://example.com")
     
