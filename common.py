@@ -4,25 +4,25 @@ Created on Feb 19, 2015
 test on Python 2.7
 '''
 
-def createDirectory(path):
+def createDirectory(Path):
     # create directory if it doesn't exists
     import os
     import errno
 
     try:
-        os.makedirs(path)
+        os.makedirs(Path)
     except OSError as exception:
         if exception.errno != errno.EEXIST:
             raise
     
-def readFile(filename):
+def readFile(Filename):
     # read text file
-    f = open(filename, 'r')
+    f = open(Filename, 'r')
     return f.read() # String
     
-def writeFile(filename, Text):
+def writeFile(Filename, Text):
     # write String to text file
-    f = open(filename, 'w')
+    f = open(Filename, 'w')
     f.write(Text)
 
 def openUrl(url):
